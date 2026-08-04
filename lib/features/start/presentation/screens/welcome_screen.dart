@@ -1,7 +1,7 @@
+import 'package:bookia_app/core/Routes/routes.dart';
 import 'package:bookia_app/core/constants/images_app.dart';
 import 'package:bookia_app/core/theme/cubit/theme_cubit.dart';
 import 'package:bookia_app/core/widgets/app_button.dart';
-import 'package:bookia_app/features/auth/presentation/screens/login_screen.dart';
 import 'package:bookia_app/features/start/presentation/widgets/coutom_flutter_toggle_tap.dart';
 import 'package:bookia_app/generated/lib/gen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -30,16 +30,16 @@ class WelcomeScreen extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 22.w),
           child: Column(
             children: [
-              SizedBox(height: 120.h),
+              120.verticalSpace,
               SvgPicture.asset(AppImages.logoSvg, height: 100.h),
-              SizedBox(height: 15.h),
+               15.verticalSpace,
               Text(
                 LocaleKeys.welcome_order_your_book_now.tr(),
                 style: Theme.of(
                   context,
                 ).textTheme.titleMedium?.copyWith(fontSize: 28),
               ),
-              SizedBox(height: 100.h),
+              100.verticalSpace,
               BlocBuilder<ThemeCubit, ThemeState>(
                 builder: (context, state) {
                   final themeCubit = context.read<ThemeCubit>();
@@ -80,20 +80,19 @@ class WelcomeScreen extends StatelessWidget {
               AppButton(
                 text: LocaleKeys.auth_login_now.tr(),
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => LoginScreen()),
-                  );
+                  Navigator.pushNamed(context, Routes.loginScreen);
                 },
               ),
-              SizedBox(height: 12.h),
+               12.verticalSpace,
               AppButton(
                 text: LocaleKeys.auth_register_now.tr(),
                 isOutlined: true,
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.registerScreen);
+                },
               ),
 
-              SizedBox(height: 40.h),
+              40.verticalSpace,
             ],
           ),
         ),

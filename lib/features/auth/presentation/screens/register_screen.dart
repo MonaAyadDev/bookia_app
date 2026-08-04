@@ -17,22 +17,22 @@ class RegisterScreen extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: 16.w),
         child: Column(
           children: [
-            SizedBox(height: 80.h),
+            80.verticalSpace,
             Text(
               LocaleKeys.auth_hello_register_to_get_started.tr(),
               style: Theme.of(
                 context,
               ).textTheme.titleMedium?.copyWith(fontSize: 28.sp),
             ),
-            SizedBox(height: 45.h),
+            45.verticalSpace,
             MyTextFormField(hint: LocaleKeys.auth_username.tr()),
-            SizedBox(height: 22.h),
+            22.verticalSpace,
             MyTextFormField(hint: LocaleKeys.auth_email.tr()),
-            SizedBox(height: 22.h),
+            22.verticalSpace,
             MyTextFormField(hint: LocaleKeys.auth_password.tr()),
-            SizedBox(height: 22.h),
+            22.verticalSpace,
             MyTextFormField(hint: LocaleKeys.auth_confirm_password.tr()),
-            SizedBox(height: 45.h),
+            45.verticalSpace,
             AppButton(
               text: LocaleKeys.auth_register_now.tr(),
               onPressed: () {

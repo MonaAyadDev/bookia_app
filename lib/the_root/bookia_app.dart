@@ -1,3 +1,4 @@
+import 'package:bookia_app/core/Routes/app_router.dart';
 import 'package:bookia_app/core/theme/cubit/theme_cubit.dart';
 import 'package:bookia_app/features/start/presentation/screens/welcome_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -23,6 +24,7 @@ class MainApp extends StatelessWidget {
               supportedLocales: context.supportedLocales,
               locale: context.locale,
               theme: context.read<ThemeCubit>().appTheme,
+              onGenerateRoute: AppRouter.onGenerateRoute,
               home: const WelcomeScreen(),
             );
           },
@@ -31,3 +33,5 @@ class MainApp extends StatelessWidget {
     );
   }
 }
+   
+

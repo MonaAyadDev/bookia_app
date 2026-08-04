@@ -1,4 +1,4 @@
-import 'package:bookia_app/bookia_app.dart';
+import 'package:bookia_app/the_root/bookia_app.dart';
 import 'package:bookia_app/core/theme/cubit/theme_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
