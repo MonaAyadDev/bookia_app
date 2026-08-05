@@ -1,5 +1,6 @@
 import 'package:bookia_app/core/Routes/routes.dart';
 import 'package:bookia_app/core/constants/images_app.dart';
+import 'package:bookia_app/core/helper/extinsions.dart';
 import 'package:bookia_app/core/theme/cubit/theme_cubit.dart';
 import 'package:bookia_app/core/widgets/app_button.dart';
 import 'package:bookia_app/features/start/presentation/widgets/coutom_flutter_toggle_tap.dart';
@@ -32,7 +33,7 @@ class WelcomeScreen extends StatelessWidget {
             children: [
               120.verticalSpace,
               SvgPicture.asset(AppImages.logoSvg, height: 100.h),
-               15.verticalSpace,
+              15.verticalSpace,
               Text(
                 LocaleKeys.welcome_order_your_book_now.tr(),
                 style: Theme.of(
@@ -80,15 +81,15 @@ class WelcomeScreen extends StatelessWidget {
               AppButton(
                 text: LocaleKeys.auth_login_now.tr(),
                 onPressed: () {
-                  Navigator.pushNamed(context, Routes.loginScreen);
+                  context.pushNamed(Routes.loginScreen);
                 },
               ),
-               12.verticalSpace,
+              12.verticalSpace,
               AppButton(
                 text: LocaleKeys.auth_register_now.tr(),
                 isOutlined: true,
                 onPressed: () {
-                  Navigator.pushNamed(context, Routes.registerScreen);
+                  context.pushNamed(Routes.registerScreen);
                 },
               ),
 

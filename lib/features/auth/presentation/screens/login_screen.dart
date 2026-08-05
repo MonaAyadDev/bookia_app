@@ -16,27 +16,36 @@ class LoginScreen extends StatelessWidget {
       appBar: AppBar(leading: MyArrowBack(), leadingWidth: 85.w),
       body: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.w),
-        child: Column(
-          children: [
-            80.verticalSpace,
-            Text(
-              LocaleKeys.auth_welcome_back.tr(),
-              style: Theme.of(
-                context,
-              ).textTheme.titleMedium?.copyWith(fontSize: 28.sp),
-            ),
-            45.verticalSpace,
-            MyTextFormField(hint: LocaleKeys.auth_enter_your_email.tr()),
-            22.verticalSpace,
-            MyTextFormField(hint: LocaleKeys.auth_enter_your_password.tr()),
-            50.verticalSpace,
-            AppButton(
-              text: LocaleKeys.auth_login_now.tr(),
-              onPressed: () {
-                Navigator.pushNamed(context, Routes.loginScreen);
-              },
-            ),
-          ],
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              80.verticalSpace,
+              Text(
+                LocaleKeys.auth_welcome_back.tr(),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleMedium?.copyWith(fontSize: 28.sp),
+              ),
+              45.verticalSpace,
+              MyTextFormField(
+                hint: LocaleKeys.auth_enter_your_email.tr(),
+                keyboardType: TextInputType.emailAddress,
+              ),
+              22.verticalSpace,
+              MyTextFormField(
+                hint: LocaleKeys.auth_enter_your_password.tr(),
+                keyboardType: TextInputType.visiblePassword,
+                ispass: true,
+              ),
+              50.verticalSpace,
+              AppButton(
+                text: LocaleKeys.auth_login_now.tr(),
+                onPressed: () {
+                  Navigator.pushNamed(context, Routes.loginScreen);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

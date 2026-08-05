@@ -18,7 +18,7 @@ class AppRouter {
           builder: (context) => Scaffold(
             body: Column(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [Text('404 Not fonde')],
+              children: [Text('404 ')],
             ),
           ),
         );

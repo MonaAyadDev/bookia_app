@@ -1,16 +1,46 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-// ignore: must_be_immutable
-class MyTextFormField extends StatelessWidget {
-  MyTextFormField({super.key, required this.hint});
-  String hint = '';
+class MyTextFormField extends StatefulWidget {
+  final String hint;
+  final TextInputType? keyboardType;
+  final bool ispass;
+
+  const MyTextFormField({
+    super.key,
+    required this.hint,
+    this.keyboardType,
+    this.ispass = false,
+  });
+
+  @override
+  State<MyTextFormField> createState() => _MyTextFormFieldState();
+}
+
+class _MyTextFormFieldState extends State<MyTextFormField> {
+  bool isobscure = true;
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      keyboardType: widget.keyboardType,
+      obscureText: isobscure && widget.ispass,
+      onTapOutside: (e) => FocusScope.of(context).unfocus(),
       decoration: InputDecoration(
         contentPadding: EdgeInsets.symmetric(vertical: 20.h, horizontal: 16.w),
-        hint: Text(hint),
+        hintText: widget.hint,
+        suffixIcon: widget.ispass
+            ? IconButton(
+                onPressed: () {
+                  setState(() {
+                    isobscure = !isobscure;
+                  });
+                },
+                icon: Icon(
+                  isobscure ? Icons.visibility_off : Icons.remove_red_eye,
+                ),
+              )
+            : null,
       ),
     );
   }

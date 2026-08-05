@@ -9,6 +9,12 @@
 ---
 
 ## 📱 App Screenshots
+| Screen | Arabic (RTL) | English (LTR) |
+| :--- | :---: | :---: |
+| **Code** | <img src="screen/code.png" width="500"/>
+| **Key bordtype** | <img src="screen/keybord_type.png" width="200"/> |
+| **pass_fild** | <img src="screen/pass_fild.png" width="200"/> 
+
 
 ### 🎨 Theme & Onboarding Preview
 
