@@ -6,5 +6,9 @@ extension Navigation on BuildContext {
     return Navigator.pushNamed(this, route);
   }
 
+    Future pushReplacement(String route) {
+    return Navigator.pushReplacementNamed(this, route);
+  }
+
   void pop() => Navigator.pop(this);
 }

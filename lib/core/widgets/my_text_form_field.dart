@@ -5,8 +5,9 @@ class MyTextFormField extends StatefulWidget {
   final String hint;
   final TextInputType? keyboardType;
   final bool ispass;
+  final TextEditingController? controller;
 
-  const MyTextFormField({
+  const MyTextFormField( {this.controller,
     super.key,
     required this.hint,
     this.keyboardType,
@@ -23,6 +24,7 @@ class _MyTextFormFieldState extends State<MyTextFormField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      controller: widget.controller ,
       keyboardType: widget.keyboardType,
       obscureText: isobscure && widget.ispass,
       onTapOutside: (e) => FocusScope.of(context).unfocus(),
