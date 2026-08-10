@@ -4,6 +4,7 @@ import 'package:bookia_app/core/helper/extinsions.dart';
 import 'package:bookia_app/core/widgets/app_button.dart';
 import 'package:bookia_app/core/widgets/my_arrow_app.dart';
 import 'package:bookia_app/core/widgets/my_text_form_field.dart';
+import 'package:bookia_app/features/auth/data/models/register_request_body.dart';
 import 'package:bookia_app/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:bookia_app/generated/lib/gen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -78,8 +79,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   text: LocaleKeys.auth_login_now.tr(),
                   onPressed: () {
                     context.read<LoginCubit>().login(
-                      email: emailController.text,
-                      password: passwordController.text,
+                     AuthRequestBody(email: emailController.text.trim(), password: passwordController.text.trim())
                     );
                   },
                 ),

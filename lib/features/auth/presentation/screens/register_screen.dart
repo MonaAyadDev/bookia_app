@@ -4,6 +4,7 @@ import 'package:bookia_app/core/helper/extinsions.dart';
 import 'package:bookia_app/core/widgets/app_button.dart';
 import 'package:bookia_app/core/widgets/my_arrow_app.dart';
 import 'package:bookia_app/core/widgets/my_text_form_field.dart';
+import 'package:bookia_app/features/auth/data/models/register_request_body.dart';
 import 'package:bookia_app/features/auth/presentation/cubit/register_cubit.dart';
 import 'package:bookia_app/generated/lib/gen.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -90,11 +91,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   text: LocaleKeys.auth_register_now.tr(),
                   onPressed: () {
                     context.read<RegisterCubit>().register(
-                      name: nameController.text.trim(),
-                      email: emailController.text.trim(),
-                      password: passwordController.text.trim(),
-                      passwordConfirmation: passwordConfirmationController.text
-                          .trim(),
+                      AuthRequestBody(
+                        email: emailController.text.trim(),
+                        password: passwordController.text.trim(),
+                        passwordConfirmation: passwordConfirmationController
+                            .text
+                            .trim(),
+                        name: nameController.text.trim(),
+                      ),
                     );
                   },
                 ),
