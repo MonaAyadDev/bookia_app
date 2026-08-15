@@ -10,7 +10,7 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
   await CacheHelper.init();
-  DioHelper.init;
+  DioHelper.init();
   runApp(
     EasyLocalization(
       supportedLocales: [Locale('en'), Locale('ar')],

@@ -1,4 +1,5 @@
 // core/helper/dio_helper.dart
+import 'package:bookia_app/core/network/apis.dart';
 import 'package:dio/dio.dart';
 
 class DioHelper {
@@ -7,7 +8,7 @@ class DioHelper {
   static void init() {
     dio = Dio(
       BaseOptions(
-        baseUrl: 'https://codingarabic.online/api/',
+        baseUrl: Apis.baseUrl,
         receiveDataWhenStatusError: true,
         connectTimeout: Duration(seconds: 20),
         receiveTimeout: Duration(seconds: 20),
@@ -15,4 +16,17 @@ class DioHelper {
     );
   }
 
+  static Future<Response> post({
+    required String endPoint,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? header,
+    Map<String, dynamic>? queryParametars,
+  }) {
+    return dio.post(
+      endPoint,
+      data: data,
+      options: Options(headers: header),
+      queryParameters: queryParametars,
+    );
+  }
 }

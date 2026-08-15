@@ -4,52 +4,33 @@ import 'package:bookia_app/core/helper/extinsions.dart';
 import 'package:bookia_app/core/widgets/app_button.dart';
 import 'package:bookia_app/core/widgets/my_arrow_app.dart';
 import 'package:bookia_app/core/widgets/my_text_form_field.dart';
-import 'package:bookia_app/features/auth/data/models/register_request_body.dart';
-import 'package:bookia_app/features/auth/presentation/cubit/register_cubit.dart';
+import 'package:bookia_app/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:bookia_app/generated/lib/gen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class RegisterScreen extends StatefulWidget {
+class RegisterScreen extends StatelessWidget {
   const RegisterScreen({super.key});
 
   @override
-  State<RegisterScreen> createState() => _RegisterScreenState();
-}
-
-class _RegisterScreenState extends State<RegisterScreen> {
-  final emailController = TextEditingController();
-  final passwordController = TextEditingController();
-  final nameController = TextEditingController();
-  final passwordConfirmationController = TextEditingController();
-
-  @override
-  void dispose() {
-    emailController.dispose();
-    passwordController.dispose();
-    nameController.dispose();
-    passwordConfirmationController.dispose();
-    super.dispose();
-  }
-
-  @override
   Widget build(BuildContext context) {
+    var cubit = context.read<AuthCubit>();
     return Scaffold(
       appBar: AppBar(leading: MyArrowBack(), leadingWidth: 85.w),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 16.w),
-          child: BlocListener<RegisterCubit, RegisterState>(
+          child: BlocListener<AuthCubit, AuthState>(
             listener: (context, state) {
-              if (state is RegisterLoding) {
+              if (state is AuthLoading) {
                 AppDialogs.loadingDialog(context);
-              } else if (state is Registersuccess) {
+              } else if (state is AuthSuccess) {
                 context.pop();
                 context.pushReplacement(Routes.homeScreen);
-              } else if (state is RegisterError) {
+              } else if (state is AuthError) {
                 context.pop();
                 AppDialogs.errorDialog(
                   context,
@@ -69,37 +50,28 @@ class _RegisterScreenState extends State<RegisterScreen> {
                 45.verticalSpace,
                 MyTextFormField(
                   hint: LocaleKeys.auth_username.tr(),
-                  controller: nameController,
+                  controller: cubit.nameController,
                 ),
                 22.verticalSpace,
                 MyTextFormField(
                   hint: LocaleKeys.auth_email.tr(),
-                  controller: emailController,
+                  controller: cubit.emailController,
                 ),
                 22.verticalSpace,
                 MyTextFormField(
                   hint: LocaleKeys.auth_password.tr(),
-                  controller: passwordController,
+                  controller: cubit.passwordController,
                 ),
                 22.verticalSpace,
                 MyTextFormField(
                   hint: LocaleKeys.auth_confirm_password.tr(),
-                  controller: passwordConfirmationController,
+                  controller: cubit.passwordConfirmationController,
                 ),
                 45.verticalSpace,
                 AppButton(
                   text: LocaleKeys.auth_register_now.tr(),
                   onPressed: () {
-                    context.read<RegisterCubit>().register(
-                      AuthRequestBody(
-                        email: emailController.text.trim(),
-                        password: passwordController.text.trim(),
-                        passwordConfirmation: passwordConfirmationController
-                            .text
-                            .trim(),
-                        name: nameController.text.trim(),
-                      ),
-                    );
+                    cubit.register();
                   },
                 ),
                 30.verticalSpace,

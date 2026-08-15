@@ -3,5 +3,6 @@ class Routes {
     static const String registerScreen = 'register Screen';
   static const String welcomeScreen = 'welcome Screen';
     static const String homeScreen = 'home Screen';
+    static const String mainScreen = 'main Screen';
 
 }
