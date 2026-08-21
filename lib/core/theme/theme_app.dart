@@ -81,20 +81,19 @@ class ThemeApp {
     ),
 
     // Bottom Navigation Theme
-    // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    //   backgroundColor: AppColors.darkSurface,
-    //   selectedItemColor: AppColors.primary,
-    //   unselectedItemColor: AppColors.darkTextBody,
-    //   type: BottomNavigationBarType.fixed,
-    //   elevation: 8,
-    // ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.darkSurface,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: AppColors.darkTextBody,
+      type: BottomNavigationBarType.fixed,
+    ),
   );
 
   static ThemeData lightTheme = ThemeData(
     primaryColor: AppColors.primary,
     fontFamily: AppFonts.sherif,
     brightness: Brightness.light,
-    scaffoldBackgroundColor: AppColors.lightScaffoldBackground,
+    scaffoldBackgroundColor: AppColors.lightBorder,
     textTheme: const TextTheme(
       headlineLarge: TextStyle(
         color: AppColors.lightTextPrimary,
@@ -107,6 +106,7 @@ class ThemeApp {
         fontWeight: FontWeight.w600,
       ),
       bodyMedium: TextStyle(color: AppColors.lightTextSecondary, fontSize: 14),
+      bodySmall: TextStyle(color: AppColors.lightTextSecondary, fontSize: 12),
     ),
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.transparent,
@@ -160,13 +160,11 @@ class ThemeApp {
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8.r)),
       ),
     ),
-    // Navigation Bar / Bottom Navigation Theme
-    // bottomNavigationBarTheme: const BottomNavigationBarThemeData(
-    //   backgroundColor: AppColors.white,
-    //   selectedItemColor: AppColors.primary,
-    //   unselectedItemColor: AppColors.lightTextSecondary,
-    //   type: BottomNavigationBarType.fixed,
-    //   elevation: 8,
-    // ),
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: AppColors.lightTextSecondary,
+      type: BottomNavigationBarType.fixed,
+    ),
   );
 }

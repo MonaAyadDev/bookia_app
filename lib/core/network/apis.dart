@@ -6,6 +6,9 @@ abstract class Apis {
   // auth
   static const login = '/login';
   static const register = '/register';
+  static const forgetPassword = '/forget-password';
+  static const checkForgetPassword = '/check-forget-password';
+  static const resetPassword = '/reset-password';
 
   // home
   static const sliders = '/sliders';

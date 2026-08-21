@@ -29,4 +29,18 @@ class DioHelper {
       queryParameters: queryParametars,
     );
   }
+
+  static Future<Response> get({
+    required String endPoint,
+    Map<String, dynamic>? data,
+    Map<String, dynamic>? header,
+    Map<String, dynamic>? queryParametars,
+  }) {
+    return dio.get(
+      endPoint,
+      data: data,
+      options: Options(headers: header),
+      queryParameters: queryParametars,
+    );
+  }
 }

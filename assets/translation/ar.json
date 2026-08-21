@@ -12,7 +12,6 @@
     "or": "أو",
     "sign_in_with_google": "المتابعة باستخدام Google",
     "sign_in_with_apple": "المتابعة باستخدام Apple",
-    "dont_have_account": "ليس لديك حساب؟ ",
     "register_now": "سجل الآن",
     "hello_register_to_get_started": "أهلاً بك! سجل للبدء",
     "username": "اسم المستخدم",
@@ -51,7 +50,7 @@
   },
   "cart": {
     "title": "السلة",
-    "total": "الإجمالي",
+    "total": "الإجمالي:",
     "checkout": "متابعة الشراء"
   },
   "place_order": {

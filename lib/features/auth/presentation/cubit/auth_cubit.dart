@@ -11,12 +11,58 @@ class AuthCubit extends Cubit<AuthState> {
   final passwordController = TextEditingController();
   final nameController = TextEditingController();
   final passwordConfirmationController = TextEditingController();
+  final newPassController = TextEditingController();
+  final verifyCodeController = TextEditingController();
+
   Future<void> login() async {
     emit(AuthLoading());
     final response = await AuthRepo.login(
       AuthParams(
         email: emailController.text,
         password: passwordController.text,
+      ),
+    );
+    if (response != null) {
+      emit(AuthSuccess());
+    } else {
+      emit(AuthError());
+    }
+  }
+
+  Future<void> forgotPassword() async {
+    emit(AuthLoading());
+    final response = await AuthRepo.forgetPassword(
+      AuthParams(email: emailController.text),
+    );
+    if (response != null) {
+      emit(AuthSuccess());
+    } else {
+      emit(AuthError());
+    }
+  }
+
+  Future<void> createPassword() async {
+    emit(AuthLoading());
+    final response = await AuthRepo.resetPassword(
+      AuthParams(
+        verifyCode: verifyCodeController.text,
+        newPassword: newPassController.text,
+        newPasswordConfirmation: passwordConfirmationController.text,
+      ),
+    );
+    if (response != null) {
+      emit(AuthSuccess());
+    } else {
+      emit(AuthError());
+    }
+  }
+
+  Future<void> otpVeritation() async {
+    emit(AuthLoading());
+    final response = await AuthRepo.checkForgetPassword(
+      AuthParams(
+        verifyCode: verifyCodeController.text,
+        email: emailController.text,
       ),
     );
     if (response != null) {
@@ -33,7 +79,7 @@ class AuthCubit extends Cubit<AuthState> {
         email: emailController.text,
         name: nameController.text,
         password: passwordController.text,
-        passwordConfirmation: passwordConfirmationController.text,
+        newPasswordConfirmation: passwordConfirmationController.text,
       ),
     );
     if (response != null) {

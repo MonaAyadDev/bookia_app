@@ -1,6 +1,4 @@
 import 'package:bookia_app/core/Routes/routes.dart';
-import 'package:bookia_app/core/constants/app_color.dart';
-import 'package:bookia_app/core/constants/images_app.dart';
 import 'package:bookia_app/core/helper/app_dialogs.dart';
 import 'package:bookia_app/core/helper/extinsions.dart';
 import 'package:bookia_app/core/widgets/app_button.dart';
@@ -13,8 +11,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({super.key});
+class ForgotPasswordScreen extends StatelessWidget {
+  const ForgotPasswordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +28,7 @@ class LoginScreen extends StatelessWidget {
                 AppDialogs.loadingDialog(context);
               } else if (state is AuthSuccess) {
                 context.pop();
-                context.pushToBase(Routes.mainScreen);
+                context.pushToBase(Routes.otpForgetPasswordScreen);
               } else if (state is AuthError) {
                 context.pop();
                 AppDialogs.errorDialog(
@@ -43,10 +41,18 @@ class LoginScreen extends StatelessWidget {
               children: [
                 80.verticalSpace,
                 Text(
-                  LocaleKeys.auth_welcome_back.tr(),
+                  LocaleKeys.auth_forgot_password_title.tr(),
                   style: Theme.of(
                     context,
                   ).textTheme.titleMedium?.copyWith(fontSize: 28.sp),
+                ),
+                45.verticalSpace,
+
+                Text(
+                  LocaleKeys.auth_forgot_password_sub.tr(),
+                  style: Theme.of(
+                    context,
+                  ).textTheme.bodyMedium?.copyWith(fontSize: 15.sp),
                 ),
                 45.verticalSpace,
                 MyTextFormField(
@@ -54,60 +60,13 @@ class LoginScreen extends StatelessWidget {
                   keyboardType: TextInputType.emailAddress,
                   controller: cubit.emailController,
                 ),
-                22.verticalSpace,
-                MyTextFormField(
-                  controller: cubit.passwordController,
-                  hint: LocaleKeys.auth_enter_your_password.tr(),
-                  keyboardType: TextInputType.visiblePassword,
-                  ispass: true,
-                ),
-                12.verticalSpace,
-                Row(
-                  children: [
-                    Spacer(),
-                    TextButton(
-                      onPressed: () {
-                        context.pushNamed(Routes.forgetPasswordScreen);
-                      },
-                      child: Text(LocaleKeys.auth_forgot_password.tr()),
-                    ),
-                  ],
-                ),
+
                 50.verticalSpace,
                 AppButton(
-                  text: LocaleKeys.auth_login_now.tr(),
+                  text: LocaleKeys.auth_send_code.tr(),
                   onPressed: () {
-                    cubit.login();
+                    cubit.forgotPassword();
                   },
-                ),
-                22.verticalSpace,
-
-                Row(
-                  children: [
-                    Expanded(
-                      child: Divider(color: AppColors.lightTextSecondary),
-                    ),
-                    20.horizontalSpace,
-                    Text('OR', style: Theme.of(context).textTheme.bodySmall),
-                    20.horizontalSpace,
-                    Expanded(
-                      child: Divider(color: AppColors.lightTextSecondary),
-                    ),
-                  ],
-                ),
-                22.verticalSpace,
-                AppButton(
-                  text: LocaleKeys.auth_sign_in_with_google.tr(),
-                  icon: AppImages.googleSvg,
-                  onPressed: () {},
-                  isOutlined: true,
-                ),
-                13.verticalSpace,
-                AppButton(
-                  text: LocaleKeys.auth_sign_in_with_apple.tr(),
-                  icon: AppImages.appleSvg,
-                  onPressed: () {},
-                  isOutlined: true,
                 ),
               ],
             ),
